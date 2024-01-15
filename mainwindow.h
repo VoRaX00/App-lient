@@ -29,6 +29,8 @@ private slots:
     void on_btnClear_clicked();
     void device_dataReady(QByteArray data);
 
+    void on_btnSend_clicked();
+
 private:
     void setDeviceController();
 

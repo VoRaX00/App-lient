@@ -38,6 +38,11 @@ bool DeviceController::isConnected()
     return socket.state() == QAbstractSocket::ConnectedState;
 }
 
+void DeviceController::send(QString message)
+{
+    socket.write(message.toUtf8());
+}
+
 void DeviceController::socket_stateChanged(QAbstractSocket::SocketState state)
 {
     if(state == QAbstractSocket::UnconnectedState){

@@ -48,12 +48,14 @@ void MainWindow::device_connected()
 {
     ui->lstConsole->addItem("Connected to device");
     ui->btnConnect->setText("Disconnect");
+    ui->grpSendData->setEnabled(true);
 }
 
 void MainWindow::device_disconnected()
 {
     ui->lstConsole->addItem("Disconnected from device");
     ui->btnConnect->setText("Connect");
+    ui->grpSendData->setEnabled(false);
 }
 
 void MainWindow::device_stateChanged(QAbstractSocket::SocketState state)
@@ -85,5 +87,12 @@ void MainWindow::on_btnClear_clicked()
 void MainWindow::device_dataReady(QByteArray data)
 {
     ui->lstConsole->addItem(QString(data));
+}
+
+
+void MainWindow::on_btnSend_clicked()
+{
+    auto message = ui->InMessage->text();
+    controller.send(message);
 }
 
